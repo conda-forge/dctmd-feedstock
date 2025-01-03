@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dcTMD-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/dcTMD-{{ version }}.tar.gz
   sha256: 63a71bb1111317092990088c160e1fce74b1bfd548e5dce8ca6c3bcee250b5b3
 
 build:
@@ -14,14 +14,14 @@ build:
   entry_points:
     - dcTMD = dcTMD.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy >=1.21.0
     - scikit-learn
     - beartype >=0.10.4
@@ -39,6 +39,7 @@ test:
     - dcTMD --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/moldyn/dcTMD
