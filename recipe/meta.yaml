@@ -1,20 +1,20 @@
 {% set name = "dcTMD" %}
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/dcTMD-{{ version }}.tar.gz
-  sha256: 63a71bb1111317092990088c160e1fce74b1bfd548e5dce8ca6c3bcee250b5b3
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | lower }}-{{ version }}.tar.gz
+  sha256: 156123c78c652af0adf69e5cf50fd45af9e23636634bc1c80117100f5a3b6ccb
 
 build:
   noarch: python
   entry_points:
     - dcTMD = dcTMD.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
